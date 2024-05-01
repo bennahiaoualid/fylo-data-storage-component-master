@@ -1,0 +1,230 @@
+/* Start Variables */
+
+:root {
+    --clr-Pale-Blue: hsl(243, 100%, 93%);
+    --clr-Grayish-Blue: hsl(229, 7%, 55%);
+    --clr-Dark-Blue: hsl(228, 56%, 26%);
+    --clr-Very-Dark-Blue: hsl(229, 57%, 11%);
+    
+    --fs-normal: clamp(1rem, 3vw, 1.125rem); /* Minimum 16px, Maximum 18px */
+    --fs-heading: clamp(2rem, 4vw, 2.5rem);
+    --fs-sub-heading: clamp(1.375rem, 3.5vw, 1.75rem); 
+
+    --fw-normal: 400;
+    --fw-bold: 700;
+
+    --main-padding : 1.5rem;
+    --main-margin :1.5rem;
+
+
+}
+
+
+/* End Variables */
+
+
+/* Start Global Rules */
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 14px;
+}
+body {
+    font-family: "Raleway", sans-serif;
+    font-size: var(--fs-normal);
+    background-image: url("../images/bg-mobile.png");
+    background-repeat: no-repeat;
+    background-color: var(--clr-Very-Dark-Blue);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+
+}
+@media only screen and (min-width:768px){
+    body {
+        background-image: url("../images/bg-desktop.png");
+        background-size: 100% 50%;
+        background-position: bottom;
+    }
+}
+
+/* end Global Rules */
+.container{
+    width: min(90%,48rem);
+    display: grid;
+    gap: var(--main-margin);
+}
+@media only screen and (min-width:768px){
+    .container {
+        grid-template-columns: 1fr 1.5fr;
+    }
+}
+.container > div{
+    background-color: var(--clr-Dark-Blue);
+    padding:var(--main-padding);
+}
+.container .controls{
+    border-top-right-radius: 50%;
+    -webkit-border-top-right-radius: 50%;
+    -moz-border-top-right-radius: 50%;
+    -ms-border-top-right-radius: 50%;
+    -o-border-top-right-radius: 50%;
+}
+.container .controls ul{
+    list-style: none;
+    width: 70%;
+    margin-block: var(--main-margin);
+    display: flex;
+    gap: calc(var(--main-padding));
+}
+
+.container .controls ul li{
+    align-self: stretch;
+    flex:1;
+}
+.container .controls ul a{
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: var(--clr-Very-Dark-Blue);
+    padding: calc(var(--main-padding) - 0.5rem);
+    border-radius: 0.5rem;
+    transition: 0.5s;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+@media only screen and (min-width:768px){
+    .container .controls ul a{
+        padding: calc(var(--main-padding) / 2);
+    }
+}
+.container .controls ul a:hover{
+    background-color: hsla(229, 57%, 11%,0.8);
+}
+
+.container .controls ul a img{
+    max-width: 100%;
+}
+
+.container .statics{
+    position: relative;
+}
+
+.container .statics > p{
+    font-size: var(--fs-normal);
+    color: var(--clr-Grayish-Blue);
+    font-weight: var(--fw-bold);
+    margin-block: var(--main-margin);
+}
+.container .statics > p span{
+    font-size: var(--fs-normal);
+    color: var(--clr-Pale-Blue);
+    font-weight: var(--fw-bold);
+}
+.container .statics .progress{
+    width: 100%;
+    height: 1rem;
+    padding: 2px;
+    margin-bottom: 0.5rem;
+    background-color: var(--clr-Very-Dark-Blue);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+.container .statics .progress span{
+    display: block;
+    width: 0%;
+    height: 100%;
+    position: relative;
+    background-image: linear-gradient(to right,hsl(6, 100%, 80%) , hsl(335, 100%, 65%));
+    border-radius: 0.5rem;
+    animation: fill-width 1s ease-in-out forwards;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    -webkit-animation: fill-width 1s ease-in-out forwards;
+}
+.container .statics .progress span::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width:calc(1rem - 2px) ;
+    background-color: var(--clr-Pale-Blue);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.container .statics .progress-val{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--main-margin);
+}
+.container .statics .progress-val p{
+    color: var(--clr-Pale-Blue);
+}
+
+.container .statics .consumed{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--clr-Pale-Blue);
+    padding:calc(var(--main-margin) / 2) var(--main-padding) ;
+    border-radius: 0.5rem;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+@media only screen and (min-width:768px){
+    .container .statics .consumed{
+        top: 0;
+        transform: translate(0,-50%);
+        right: var(--main-padding);
+        -webkit-transform: translate(0,-50%);
+        -moz-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+        -o-transform: translate(0,-50%);
+    }
+    
+}
+.container .statics .consumed span{
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-heading);
+    
+}
+
+/* animations */
+@keyframes fill-width {
+    100%{
+        width: 81.5%;
+    }
+}
+
